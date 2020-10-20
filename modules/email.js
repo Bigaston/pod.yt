@@ -5,7 +5,7 @@ const fs = require("fs");
 const path = require("path")
 
 module.exports = {
-    send_check: (email, address, to) => {
+    send_check: (email, address, to, jwt_verif) => {
         transporter = nodemailer.createTransport({
             host: process.env.SMTP_HOST,
             port: process.env.SMTP_PORT,
@@ -20,7 +20,7 @@ module.exports = {
         renderObj = {
             address: address,
             to: to,
-            jwt_link: "http://example.com"
+            jwt_link: "https://pod.yt/~verif/" + jwt_verif
         }
 
         const mailOptions = {

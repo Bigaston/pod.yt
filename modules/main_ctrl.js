@@ -4,6 +4,7 @@ const parse = require('node-html-parser').parse;
 const bdd = require("./bdd").get();
 const sgbd = require("./bdd")
 const email = require("./email")
+const jwt = require("jsonwebtoken")
 
 let yt_regex = new RegExp(/(https:\/\/www\.youtube\.com\/channel\/[A-Za-z0-9]+)|(https:\/\/www\.youtube\.com\/playlist\?list=[A-Za-z0-9]+)/);
 let link_regex = new RegExp(/[A-Za-z][A-Za-z0-9]{1,24}/);
@@ -33,7 +34,13 @@ module.exports = {
 
                         sgbd.save();
 
-                        email.send_check(req.body.email, req.body.link, req.body.yt_addr)
+                        let jwt_verif = jwt.sign({
+                            link: req.body.link
+                        }, process.env.JWT_SECRET, {
+                            expiresIn: "2h"
+                        })
+
+                        email.send_check(req.body.email, req.body.link, req.body.yt_addr, jwt_verif)
 
                         res.redirect("/~ok")
                     } else {
