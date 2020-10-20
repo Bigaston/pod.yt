@@ -3,6 +3,7 @@ const axios = require("axios");
 const parse = require('node-html-parser').parse;
 const bdd = require("./bdd").get();
 const sgbd = require("./bdd")
+const email = require("./email")
 
 let yt_regex = new RegExp(/(https:\/\/www\.youtube\.com\/channel\/[A-Za-z0-9]+)|(https:\/\/www\.youtube\.com\/playlist\?list=[A-Za-z0-9]+)/);
 let link_regex = new RegExp(/[A-Za-z][A-Za-z0-9]{1,24}/);
@@ -26,10 +27,13 @@ module.exports = {
                     if (sgbd.check_link_valid(req.body.link)) {
                         bdd.to_email[req.body.link] = {
                             to: req.body.yt_addr,
-                            email: req.body.email
+                            email: req.body.email,
+                            created_at: Date.now()
                         }
 
                         sgbd.save();
+
+                        email.send_check(req.body.email, req.body.link, req.body.yt_addr)
 
                         res.redirect("/~ok")
                     } else {

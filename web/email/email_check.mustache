@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>Pod.yt - Votre lien vers YouTube</title>
+    <meta name="description" content="Pod.yt, réducteur d'url gratuite pour chaîne YouTube et Playlist de podcasts">
+    <meta name="author" content="Bigaston">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <link href="//fonts.googleapis.com/css?family=Raleway:400,300,600" rel="stylesheet" type="text/css">
+
+    <link rel="stylesheet" href="/public/normalize.css">
+    <link rel="stylesheet" href="/public/skeleton.css">
+
+    <link rel="icon" type="image/png" href="images/favicon.png">
+</head>
+<body>
+
+    <div class="container">
+        <div class="row">
+            <div class="half column">
+                <h1>Pod.yt</h1>
+                <p>Bonjour!<br />Vous avez demandé une redirection de l'adresse <b>https://pod.yt/{{ address }}</b> vers <b>{{ to }}</b>.</p>
+                <p>Pour valider cette demande de redirection, merci de cliquer sur le lien si dessous.</b>
+                <pre>{{ jwt_link }}</pre>
+            </div>
+        </div>
+    </div>
+
+</body>
+</html>
