@@ -98,5 +98,12 @@ module.exports = {
                 }
             }
         });
+    },
+    check_code: (req, res) => {
+        if (sgbd.check_code_valid(req.params.code)) {
+            res.json({return: "OK"})
+        } else {
+            res.json({return: "NOT OK"})
+        }
     }
 }

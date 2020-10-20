@@ -2,3 +2,10 @@
     color: red;
     font-weight: bold;
 }
+
+#error_p {
+    color: red;
+    font-weight: bold;
+    margin-top: 0px;
+    margin-bottom: 0px;
+}

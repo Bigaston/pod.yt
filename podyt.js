@@ -14,6 +14,6 @@ app.get("/", m.main_ctrl.index);
 app.post("/~add_link", m.main_ctrl.add_link);
 app.get("/~ok", m.main_ctrl.ok);
 app.get("/~verif/:jwt", m.main_ctrl.verif_email);
-
+app.get("/~check_code/:code", m.main_ctrl.check_code);
 
 app.listen(process.env.PORT, () => console.log(`Serveur lancé sur ${process.env.PORT}`))
