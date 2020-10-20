@@ -58,6 +58,26 @@ module.exports = {
         res.setHeader("content-type", "text/html");
         res.send(mustache.render(template, renderObj))
     },
+    dashboard_all: (req, res) => {
+        let template = fs.readFileSync(path.join(__dirname, "../web/admin/all_link.mustache"), "utf-8");
+        
+        let renderObj = {
+            links: []
+        }
+
+        let keys = Object.keys(bdd.link);
+        keys.forEach((l) => {
+            let obj = {
+                code: l,
+                to: bdd.link[l].to
+            }
+
+            renderObj.links.push(obj);
+        })
+
+        res.setHeader("content-type", "text/html");
+        res.send(mustache.render(template, renderObj))
+    },
     accept: (req, res) => {
         email.send_ok(bdd.to_moderation[req.params.code].email, req.params.code, bdd.to_moderation[req.params.code].to)
         console.log("Lien accepté " + req.params.code);

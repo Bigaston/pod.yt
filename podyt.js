@@ -32,6 +32,7 @@ app.get("/~404", m.main_ctrl.not_found);
 app.get("/~login", m.admin_ctrl.login_form);
 app.post("/~login", m.admin_ctrl.admin_post);
 app.get("/~a/dashboard", m.admin_ctrl.is_logged, m.admin_ctrl.dashboard);
+app.get("/~a/dashboard/all", m.admin_ctrl.is_logged, m.admin_ctrl.dashboard_all)
 app.get("/~a/accept/:code", m.admin_ctrl.is_logged_request, m.admin_ctrl.accept);
 app.get("/~a/reject/:code/:raison", m.admin_ctrl.is_logged_request, m.admin_ctrl.reject);
 
