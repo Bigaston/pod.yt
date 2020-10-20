@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>Pod.yt - Votre lien vers YouTube</title>
+    <meta name="description" content="Pod.yt, réducteur d'url gratuite pour chaîne YouTube et Playlist de podcasts">
+    <meta name="author" content="Bigaston">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <link href="//fonts.googleapis.com/css?family=Raleway:400,300,600" rel="stylesheet" type="text/css">
+
+    <link rel="stylesheet" href="/public/normalize.css">
+    <link rel="stylesheet" href="/public/skeleton.css">
+
+    <link rel="icon" type="image/png" href="images/favicon.png">
+</head>
+<body>
+
+    <div class="container">
+        <div class="row">
+            <div class="half column" style="margin-top: 25%">
+                <h1>Pod.yt</h1>
+                <p>Pod.yt est un service de redirection d'URL gratuit dédié aux chaînes et aux playlist YouTube de Podcast. Vous pouvez demander ici à réserver un lien, en précisant le lien de la playlist en question.</p>
+                <p>Il vous est aussi demandé une adresse email. Cette adresse email sera utilisée si vous avez envie de changer la destination du lien, ou de le supprimer. Alors faites bien attention d'y avoir accès!</p>
+                <p>Un lien ne peut uniquement être composé de majuscule, de minuscule ou d'un chiffre, et commencer par une lettre. La longueur doit être entre 3 et 24 caractères.</p>
+
+                <h2>Demander un lien</h2>
+                <form action="/~add_link" method="POST">
+                    <label for="yt_addr">Votre adresse YouTube</label>
+                    <input class="u-full-width" type="url" placeholder="https://www.youtube.com/channel/..." id="yt_addr" name="yt_addr" required>
+                    <label for="link">Votre lien</label>
+                    <input class="u-full-width" type="text" placeholder="https://pod.yt/..." pattern="[A-Za-z][A-Za-z0-9]{1,24}" id="link" name="link" minlength="3" maxlength="24" required>
+                    <label for="email">Votre adresse Email</label>
+                    <input class="u-full-width" type="email" id="email" name="email">
+                    <input class="button-primary" type="submit" value="Demander" required>
+                </form>
+            </div>
+        </div>
+    </div>
+
+</body>
+</html>
