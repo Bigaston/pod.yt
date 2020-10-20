@@ -33,5 +33,61 @@ module.exports = {
         transporter.sendMail(mailOptions, function (err, info) {
             if(err) return console.log(err)
         });
+    },
+    send_ok: (email, address, to) => {
+        transporter = nodemailer.createTransport({
+            host: process.env.SMTP_HOST,
+            port: process.env.SMTP_PORT,
+            secure: false, // upgrade later with STARTTLS
+            auth: {
+                user: process.env.SMTP_USERNAME,
+                pass: process.env.SMTP_PASSWORD
+            }
+        });
+
+        template = fs.readFileSync(path.join(__dirname, "../web/email/email_ok.mustache"), "utf8")
+        renderObj = {
+            address: process.env.HOST + "/" + address,
+            to: to,
+        }
+
+        const mailOptions = {
+            from: 'Accepté@' + process.env.SMTP_DOMAIN, // sender address
+            to: email, // list of receivers
+            subject: "Votre lien " + address + " a été accepté!", // Subject line
+            html: juice(mustache.render(template, renderObj))
+        };
+
+        transporter.sendMail(mailOptions, function (err, info) {
+            if(err) return console.log(err)
+        });
+    },
+    send_nope: (email, address, to) => {
+        transporter = nodemailer.createTransport({
+            host: process.env.SMTP_HOST,
+            port: process.env.SMTP_PORT,
+            secure: false, // upgrade later with STARTTLS
+            auth: {
+                user: process.env.SMTP_USERNAME,
+                pass: process.env.SMTP_PASSWORD
+            }
+        });
+
+        template = fs.readFileSync(path.join(__dirname, "../web/email/email_nope.mustache"), "utf8")
+        renderObj = {
+            address: process.env.HOST + "/" + address,
+            to: to,
+        }
+
+        const mailOptions = {
+            from: 'Refusé@' + process.env.SMTP_DOMAIN, // sender address
+            to: email, // list of receivers
+            subject: "Votre lien " + address + " a été refusé...", // Subject line
+            html: juice(mustache.render(template, renderObj))
+        };
+
+        transporter.sendMail(mailOptions, function (err, info) {
+            if(err) return console.log(err)
+        });
     }
 }
