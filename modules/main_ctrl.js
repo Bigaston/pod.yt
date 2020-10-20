@@ -105,5 +105,8 @@ module.exports = {
         } else {
             res.json({return: "NOT OK"})
         }
+    },
+    not_found: (req, res) => {
+	    res.sendFile(path.join(__dirname, "../web/not_found.html"))
     }
 }
