@@ -60,6 +60,7 @@ module.exports = {
     },
     accept: (req, res) => {
         email.send_ok(bdd.to_moderation[req.params.code].email, req.params.code, bdd.to_moderation[req.params.code].to)
+        console.log("Lien accepté " + req.params.code);
         bdd.link[req.params.code] = bdd.to_moderation[req.params.code];
         delete(bdd.to_moderation[req.params.code]);
         sgbd.save();
@@ -67,6 +68,7 @@ module.exports = {
     },
     reject: (req, res) => {
         email.send_nope(bdd.to_moderation[req.params.code].email, req.params.code, bdd.to_moderation[req.params.code].to)
+        console.log("Lien refusé " + req.params.code);
         delete(bdd.to_moderation[req.params.code]);
         sgbd.save();
         res.send("OK");

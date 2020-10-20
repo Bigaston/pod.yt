@@ -42,6 +42,8 @@ module.exports = {
                             expiresIn: "2h"
                         })
 
+                        console.log("Lien demandé " + req.body.code);
+
                         email.send_check(req.body.email, req.body.code, req.body.yt_addr, jwt_verif)
 
                         res.redirect("/~ok")
@@ -75,6 +77,8 @@ module.exports = {
                     bdd.to_moderation[decoded.code] = bdd.to_email[decoded.code];
                     delete(bdd.to_email[decoded.code]);
                     sgbd.save();
+
+                    console.log("Lien vérifié " + decoded.code);
 
                     let template = fs.readFileSync(path.join(__dirname, "../web/basic_page.mustache"), "utf-8");
 

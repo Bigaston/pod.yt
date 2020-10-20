@@ -4,7 +4,9 @@ const express = require('express')
 const m = require("./modules")
 const bodyParser = require('body-parser')
 const session = require('express-session')
-const bcrypt = require("bcrypt");
+
+m.link.flush_link()
+setInterval(m.link.flush_link, 1000 * 60 * 5);
 
 var app = express()
 
