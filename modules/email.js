@@ -18,9 +18,9 @@ module.exports = {
 
         template = fs.readFileSync(path.join(__dirname, "../web/email/email_check.mustache"), "utf8")
         renderObj = {
-            address: address,
+            address: process.env.HOST + "/" + address,
             to: to,
-            jwt_link: "https://pod.yt/~verif/" + jwt_verif
+            jwt_link: process.env.HOST + "/~verif/" + jwt_verif
         }
 
         const mailOptions = {

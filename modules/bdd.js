@@ -29,9 +29,9 @@ module.exports = {
     save: () => {
         fs.writeFileSync(path.join(__dirname, "../bdd.json"), JSON.stringify(bdd, null, 4));
     },
-    check_link_valid: (link) => {
+    check_code_valid: (code) => {
         let loc_bdd = module.exports.get();
 
-        return !Object.keys(loc_bdd.link).includes(link) && !Object.keys(loc_bdd.to_moderation).includes(link) && !Object.keys(loc_bdd.to_email).includes(link);
+        return !Object.keys(loc_bdd.link).includes(code) && !Object.keys(loc_bdd.to_moderation).includes(code) && !Object.keys(loc_bdd.to_email).includes(code);
     }
 }

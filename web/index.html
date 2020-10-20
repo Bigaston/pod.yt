@@ -12,6 +12,7 @@
 
     <link rel="stylesheet" href="/public/normalize.css">
     <link rel="stylesheet" href="/public/skeleton.css">
+    <link rel="stylesheet" href="/public/style.css">
 
     <link rel="icon" type="image/png" href="images/favicon.png">
 </head>
@@ -26,11 +27,12 @@
                 <p>Un lien ne peut uniquement être composé de majuscule, de minuscule ou d'un chiffre, et commencer par une lettre. La longueur doit être entre 3 et 24 caractères.</p>
 
                 <h2>Demander un lien</h2>
+                <div id="error_div"></div>
                 <form action="/~add_link" method="POST">
                     <label for="yt_addr">Votre adresse YouTube</label>
                     <input class="u-full-width" type="url" placeholder="https://www.youtube.com/channel/..." id="yt_addr" name="yt_addr" required>
-                    <label for="link">Votre lien</label>
-                    <input class="u-full-width" type="text" placeholder="https://pod.yt/..." pattern="[A-Za-z][A-Za-z0-9]{1,24}" id="link" name="link" minlength="3" maxlength="24" required>
+                    <label for="code">Votre code</label>
+                    <input class="u-full-width" type="text" placeholder="https://pod.yt/..." pattern="[A-Za-z][A-Za-z0-9]{1,24}" id="code" name="code" minlength="3" maxlength="24" required>
                     <label for="email">Votre adresse Email</label>
                     <input class="u-full-width" type="email" id="email" name="email">
                     <input class="button-primary" type="submit" value="Demander" required>
@@ -39,5 +41,6 @@
         </div>
     </div>
 
+    <script src="/public/error.js"></script>
 </body>
 </html>
