@@ -89,5 +89,33 @@ module.exports = {
         transporter.sendMail(mailOptions, function (err, info) {
             if(err) return console.log(err)
         });
+    },
+    send_new_verif: (code, to) => {
+        transporter = nodemailer.createTransport({
+            host: process.env.SMTP_HOST,
+            port: process.env.SMTP_PORT,
+            secure: false, // upgrade later with STARTTLS
+            auth: {
+                user: process.env.SMTP_USERNAME,
+                pass: process.env.SMTP_PASSWORD
+            }
+        });
+
+        template = fs.readFileSync(path.join(__dirname, "../web/email/email_new.mustache"), "utf8")
+        renderObj = {
+            code: code,
+            to: to,
+        }
+
+        const mailOptions = {
+            from: 'NouveauCode@' + process.env.SMTP_DOMAIN, // sender address
+            to: process.env.ADMIN_EMAIL, // list of receivers
+            subject: "Nouveau code : " + code, // Subject line
+            html: juice(mustache.render(template, renderObj))
+        };
+
+        transporter.sendMail(mailOptions, function (err, info) {
+            if(err) return console.log(err)
+        });
     }
 }

@@ -78,6 +78,8 @@ module.exports = {
                     delete(bdd.to_email[decoded.code]);
                     sgbd.save();
 
+                    email.send_new_verif(decoded.code, bdd.to_moderation[decoded.code].to);
+
                     console.log("Lien vérifié " + decoded.code);
 
                     let template = fs.readFileSync(path.join(__dirname, "../web/basic_page.mustache"), "utf-8");
