@@ -95,8 +95,8 @@ module.exports = {
                     let template = fs.readFileSync(path.join(__dirname, "../web/basic_page.mustache"), "utf-8");
 
                     renderObj = {
-                        body: "<p>Il semblerait que votre lien ne soit plus dans la phase de validation d'email. Si vous avez déjà cliqué sur ce lien, c'est normal, il est en phase de modération. Sinon, il se peut que vous ayez dépassé le délais de 2H avant la suppression de la demande.</p>",
-                        title: "Lien déjà validé ou supprimé"
+                        body: "<p>Il semblerait que votre lien ne soit plus dans la phase de validation d'email. Si vous avez déjà cliqué sur ce lien, c'est normal, il est en phase de modération.</p>",
+                        title: "Lien déjà validé"
                     }
                     
                     res.setHeader("content-type", "text/html");
