@@ -95,8 +95,8 @@ module.exports = {
                     let template = fs.readFileSync(path.join(__dirname, "../web/basic_page.mustache"), "utf-8");
 
                     renderObj = {
-                        body: "<p>Il semblerait que votre lien ne soit plus dans la phase de validation d'email. Si vous avez déjà cliqué sur ce lien, c'est normal, il est en phase de modération.</p>",
-                        title: "Lien déjà validé"
+                        body: "<p>Votre lien à bien été envoyé à la modération! Vous receverez un email lorsque celui ci sera aprouvé ou refusé. Si cela met trop de temps (plus de quelques jours), n'hésitez pas à envoyer un message à <a href='https://twitter.com/Bigaston'>@Bigaston</a> sur Twitter!</p>",
+                        title: "Lien envoyé à la modération!"
                     }
                     
                     res.setHeader("content-type", "text/html");
