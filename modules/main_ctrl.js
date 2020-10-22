@@ -9,7 +9,7 @@ const fs = require("fs");
 const mustache = require("mustache");
 
 let yt_regex = new RegExp(/(https:\/\/www\.youtube\.com\/channel\/[A-Za-z0-9]+)|(https:\/\/www\.youtube\.com\/playlist\?list=[A-Za-z0-9]+)|(https:\/\/www\.youtube\.com\/c\/[A-Za-z0-9]+)|(https:\/\/www\.youtube\.com\/user\/[A-Za-z0-9]+)/);
-let code_regex = new RegExp(/[A-Za-z][A-Za-z0-9]{1,24}/);
+let code_regex = new RegExp(/[A-Za-z][-_A-Za-z0-9]{1,24}/);
 let email_regex = new RegExp(/^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?(?:\.[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?)*$/)
 
 module.exports = {

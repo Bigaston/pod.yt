@@ -24,7 +24,7 @@
                 <h1>Pod.yt</h1>
                 <p>Pod.yt est un service de redirection d'URL gratuit dédié aux chaînes et aux playlist YouTube de Podcast. Vous pouvez demander ici à réserver un lien, en précisant le lien de la playlist en question.</p>
                 <p>Il vous est aussi demandé une adresse email. Cette adresse email sera utilisée si vous avez envie de changer la destination du lien, ou de le supprimer. Alors faites bien attention d'y avoir accès!</p>
-                <p>Un lien ne peut uniquement être composé de majuscule, de minuscule ou d'un chiffre, et commencer par une lettre. La longueur doit être entre 3 et 24 caractères.</p>
+                <p>Un lien ne peut uniquement être composé de majuscule, de minuscule, des caractères - ou _, ou d'un chiffre, et commencer par une lettre. La longueur doit être entre 3 et 24 caractères.</p>
 
                 <h2>Demander un lien</h2>
                 <div id="error_div"></div>
@@ -33,7 +33,7 @@
                     <input class="u-full-width" type="url" placeholder="https://www.youtube.com/channel/..." id="yt_addr" name="yt_addr" required>
                     <p id="error_p"></p>
                     <label for="code">Votre code</label>
-                    <input class="u-full-width" type="text" placeholder="Exemple" pattern="[A-Za-z][A-Za-z0-9]{1,24}" id="code" name="code" minlength="3" maxlength="24" required>
+                    <input class="u-full-width" type="text" placeholder="Exemple" pattern="[A-Za-z][-_A-Za-z0-9]{1,24}" id="code" name="code" minlength="3" maxlength="24" required>
                     <label for="email">Votre adresse Email</label>
                     <input class="u-full-width" type="email" id="email" name="email">
                     <input class="button-primary" type="submit" id="submit" value="Demander" required>
