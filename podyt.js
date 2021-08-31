@@ -44,7 +44,7 @@ app.get(
   m.admin_ctrl.accept
 );
 app.get(
-  "/~a/reject/:code/:raison",
+  "/~a/reject/:code",
   m.admin_ctrl.is_logged_request,
   m.admin_ctrl.reject
 );
